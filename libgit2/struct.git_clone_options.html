@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `git_clone_options` struct in crate `libgit2`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, git_clone_options">
+
+    <title>libgit2::git_clone_options - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../main.css">
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <section class="sidebar">
+        
+        <p class='location'><a href='index.html'>libgit2</a></p><div class='block struct'><h2>Structs</h2><a class='struct ' href='struct.git_buf.html'>git_buf</a><a class='struct ' href='struct.git_checkout_options.html'>git_checkout_options</a><a class='struct current' href='struct.git_clone_options.html'>git_clone_options</a><a class='struct ' href='struct.git_config_entry.html'>git_config_entry</a><a class='struct ' href='struct.git_diff_file.html'>git_diff_file</a><a class='struct ' href='struct.git_error.html'>git_error</a><a class='struct ' href='struct.git_index_entry.html'>git_index_entry</a><a class='struct ' href='struct.git_index_time.html'>git_index_time</a><a class='struct ' href='struct.git_oid.html'>git_oid</a><a class='struct ' href='struct.git_remote_callbacks.html'>git_remote_callbacks</a><a class='struct ' href='struct.git_revparse_mode_t.html'>git_revparse_mode_t</a><a class='struct ' href='struct.git_revspec.html'>git_revspec</a><a class='struct ' href='struct.git_signature.html'>git_signature</a><a class='struct ' href='struct.git_strarray.html'>git_strarray</a><a class='struct ' href='struct.git_time.html'>git_time</a><a class='struct ' href='struct.git_transfer_progress.html'>git_transfer_progress</a></div>
+    </section>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press 'S' to search, '?' for more options..."
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content struct">
+<h1 class='fqn'><div class='in-band'>Struct <a href='index.html'>libgit2</a>&#8203;::<a class='struct' href=''>git_clone_options</a>&#8203;</div><div class='out-of-band'><span id='render-detail'>
+            <a id="collapse-all" href="#">[-]
+            </a>&nbsp;<a id="expand-all" href="#">[+]</a>
+        </span><a id='src-2235' href='../src/libgit2/home/travis/build/alexcrichton/git2-rs/libgit2/src/lib.rs.html#127-139'>[src]</a></div></h1>
+<pre class='rust struct'>pub struct git_clone_options {
+    pub version: <a class='type' href='http://doc.rust-lang.org/master/libc/types/os/arch/c95/type.c_uint.html' title='libc::types::os::arch::c95::c_uint'>c_uint</a>,
+    pub checkout_opts: <a class='struct' href='../libgit2/struct.git_checkout_options.html' title='libgit2::git_checkout_options'>git_checkout_options</a>,
+    pub remote_callbacks: <a class='struct' href='../libgit2/struct.git_remote_callbacks.html' title='libgit2::git_remote_callbacks'>git_remote_callbacks</a>,
+    pub bare: <a class='type' href='http://doc.rust-lang.org/master/libc/types/os/arch/c95/type.c_int.html' title='libc::types::os::arch::c95::c_int'>c_int</a>,
+    pub local: <a class='type' href='../libgit2/type.git_clone_local_t.html' title='libgit2::git_clone_local_t'>git_clone_local_t</a>,
+    pub checkout_branch: *const <a class='type' href='http://doc.rust-lang.org/master/libc/types/os/arch/c95/type.c_char.html' title='libc::types::os::arch::c95::c_char'>c_char</a>,
+    pub signature: *mut <a class='struct' href='../libgit2/struct.git_signature.html' title='libgit2::git_signature'>git_signature</a>,
+    pub repository_cb: <a class='type' href='http://doc.rust-lang.org/master/core/option/type.Option.html' title='core::option::Option'>Option</a>&lt;<a class='type' href='../libgit2/type.git_repository_create_cb.html' title='libgit2::git_repository_create_cb'>git_repository_create_cb</a>&gt;,
+    pub repository_cb_payload: *mut <a class='type' href='http://doc.rust-lang.org/master/libc/types/common/c95/type.c_void.html' title='libc::types::common::c95::c_void'>c_void</a>,
+    pub remote_cb: <a class='type' href='http://doc.rust-lang.org/master/core/option/type.Option.html' title='core::option::Option'>Option</a>&lt;<a class='type' href='../libgit2/type.git_remote_create_cb.html' title='libgit2::git_remote_create_cb'>git_remote_create_cb</a>&gt;,
+    pub remote_cb_payload: *mut <a class='type' href='http://doc.rust-lang.org/master/libc/types/common/c95/type.c_void.html' title='libc::types::common::c95::c_void'>c_void</a>,
+}</pre><h2 class='fields'>Fields</h2>
+<table><tr><td id='structfield.version'><a class='stability Unmarked' title='No stability level'></a><code>version</code></td><td></td></tr><tr><td id='structfield.checkout_opts'><a class='stability Unmarked' title='No stability level'></a><code>checkout_opts</code></td><td></td></tr><tr><td id='structfield.remote_callbacks'><a class='stability Unmarked' title='No stability level'></a><code>remote_callbacks</code></td><td></td></tr><tr><td id='structfield.bare'><a class='stability Unmarked' title='No stability level'></a><code>bare</code></td><td></td></tr><tr><td id='structfield.local'><a class='stability Unmarked' title='No stability level'></a><code>local</code></td><td></td></tr><tr><td id='structfield.checkout_branch'><a class='stability Unmarked' title='No stability level'></a><code>checkout_branch</code></td><td></td></tr><tr><td id='structfield.signature'><a class='stability Unmarked' title='No stability level'></a><code>signature</code></td><td></td></tr><tr><td id='structfield.repository_cb'><a class='stability Unmarked' title='No stability level'></a><code>repository_cb</code></td><td></td></tr><tr><td id='structfield.repository_cb_payload'><a class='stability Unmarked' title='No stability level'></a><code>repository_cb_payload</code></td><td></td></tr><tr><td id='structfield.remote_cb'><a class='stability Unmarked' title='No stability level'></a><code>remote_cb</code></td><td></td></tr><tr><td id='structfield.remote_cb_payload'><a class='stability Unmarked' title='No stability level'></a><code>remote_cb_payload</code></td><td></td></tr></table></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <div id="help" class="hidden">
+        <div class="shortcuts">
+            <h1>Keyboard shortcuts</h1>
+            <dl>
+                <dt>?</dt>
+                <dd>Show this help dialog</dd>
+                <dt>S</dt>
+                <dd>Focus the search field</dd>
+                <dt>&larrb;</dt>
+                <dd>Move up in search results</dd>
+                <dt>&rarrb;</dt>
+                <dd>Move down in search results</dd>
+                <dt>&#9166;</dt>
+                <dd>Go to active search result</dd>
+            </dl>
+        </div>
+        <div class="infos">
+            <h1>Search tricks</h1>
+            <p>
+                Prefix searches with a type followed by a colon (e.g.
+                <code>fn:</code>) to restrict the search to a given type.
+            </p>
+            <p>
+                Accepted types are: <code>fn</code>, <code>mod</code>,
+                <code>struct</code>, <code>enum</code>,
+                <code>trait</code>, <code>typedef</code> (or
+                <code>tdef</code>).
+            </p>
+        </div>
+    </div>
+
+    
+
+    <script>
+        window.rootPath = "../";
+        window.currentCrate = "libgit2";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../jquery.js"></script>
+    <script src="../main.js"></script>
+    
+    <script async src="../search-index.js"></script>
+</body>
+</html>

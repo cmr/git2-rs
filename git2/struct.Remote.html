@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `Remote` struct in crate `git2`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, Remote">
+
+    <title>git2::Remote - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../main.css">
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <section class="sidebar">
+        
+        <p class='location'><a href='index.html'>git2</a></p><div class='block mod'><h2>Modules</h2><a class='mod ' href='build/index.html'>build</a></div><div class='block struct'><h2>Structs</h2><a class='struct ' href='struct.Blob.html'>Blob</a><a class='struct ' href='struct.Branch.html'>Branch</a><a class='struct ' href='struct.Branches.html'>Branches</a><a class='struct ' href='struct.Buf.html'>Buf</a><a class='struct ' href='struct.Commit.html'>Commit</a><a class='struct ' href='struct.Config.html'>Config</a><a class='struct ' href='struct.ConfigEntries.html'>ConfigEntries</a><a class='struct ' href='struct.ConfigEntry.html'>ConfigEntry</a><a class='struct ' href='struct.Error.html'>Error</a><a class='struct ' href='struct.Index.html'>Index</a><a class='struct ' href='struct.IndexEntry.html'>IndexEntry</a><a class='struct ' href='struct.Object.html'>Object</a><a class='struct ' href='struct.Oid.html'>Oid</a><a class='struct ' href='struct.Parents.html'>Parents</a><a class='struct ' href='struct.Reference.html'>Reference</a><a class='struct ' href='struct.ReferenceNames.html'>ReferenceNames</a><a class='struct ' href='struct.References.html'>References</a><a class='struct ' href='struct.Refspec.html'>Refspec</a><a class='struct ' href='struct.Refspecs.html'>Refspecs</a><a class='struct current' href='struct.Remote.html'>Remote</a><a class='struct ' href='struct.Repository.html'>Repository</a><a class='struct ' href='struct.Revspec.html'>Revspec</a><a class='struct ' href='struct.Signature.html'>Signature</a><a class='struct ' href='struct.StringArray.html'>StringArray</a><a class='struct ' href='struct.StringArrayBytes.html'>StringArrayBytes</a><a class='struct ' href='struct.StringArrayItems.html'>StringArrayItems</a><a class='struct ' href='struct.Submodule.html'>Submodule</a><a class='struct ' href='struct.Tree.html'>Tree</a><a class='struct ' href='struct.TreeEntry.html'>TreeEntry</a></div>
+    </section>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press 'S' to search, '?' for more options..."
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content struct">
+<h1 class='fqn'><div class='in-band'>Struct <a href='index.html'>git2</a>&#8203;::<a class='struct' href=''>Remote</a>&#8203;</div><div class='out-of-band'><span id='render-detail'>
+            <a id="collapse-all" href="#">[-]
+            </a>&nbsp;<a id="expand-all" href="#">[+]</a>
+        </span><a id='src-13642' href='../src/git2/home/travis/build/alexcrichton/git2-rs/src/remote.rs.html#15-20'>[src]</a></div></h1>
+<pre class='rust struct'>pub struct Remote&lt;'a&gt; {
+    // some fields omitted
+}</pre><div class='docblock'><p>A structure represending a <a href="http://git-scm.com/book/en/Git-Basics-Working-with-Remotes">remote</a> of a git repository.</p>
+
+<p>The lifetime is the lifetime of the repository that it is attached to. The
+remote is used to manage fetches and pushes as well as refspecs.</p>
+</div><h2 id='methods'>Methods</h2><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl&lt;'a&gt; <a class='struct' href='../git2/struct.Remote.html' title='git2::Remote'>Remote</a>&lt;'a&gt;</code></h3><div class='impl-methods'><h4 id='method.from_raw' class='method'><a class='stability Unmarked' title='No stability level'></a><code>unsafe fn <a href='#method.from_raw' class='fnname'>from_raw</a>(_repo: &amp;<a class='struct' href='../git2/struct.Repository.html' title='git2::Repository'>Repository</a>, raw: *mut <a class='type' href='../libgit2/type.git_remote.html' title='libgit2::git_remote'>git_remote</a>) -&gt; <a class='struct' href='../git2/struct.Remote.html' title='git2::Remote'>Remote</a></code></h4>
+<div class='docblock'><p>Creates a new remote from its raw pointer.</p>
+
+<p>This method is unsafe as there is no guarantee that <code>raw</code> is valid or
+tha no other remote is using it.</p>
+</div><h4 id='method.is_valid_name' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.is_valid_name' class='fnname'>is_valid_name</a>(remote_name: &amp;<a href='http://doc.rust-lang.org/master/std/primitive.str.html'>str</a>) -&gt; <a href='http://doc.rust-lang.org/master/std/primitive.bool.html'>bool</a></code></h4>
+<div class='docblock'><p>Ensure the remote name is well-formed.</p>
+</div><h4 id='method.is_valid_url' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.is_valid_url' class='fnname'>is_valid_url</a>(url: &amp;<a href='http://doc.rust-lang.org/master/std/primitive.str.html'>str</a>) -&gt; <a href='http://doc.rust-lang.org/master/std/primitive.bool.html'>bool</a></code></h4>
+<div class='docblock'><p>Return whether a string is a valid remote URL</p>
+</div><h4 id='method.is_supported_url' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.is_supported_url' class='fnname'>is_supported_url</a>(url: &amp;<a href='http://doc.rust-lang.org/master/std/primitive.str.html'>str</a>) -&gt; <a href='http://doc.rust-lang.org/master/std/primitive.bool.html'>bool</a></code></h4>
+<div class='docblock'><p>Return whether the passed URL is supported by this version of the
+library.</p>
+</div><h4 id='method.name' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.name' class='fnname'>name</a>(&amp;self) -&gt; <a class='type' href='http://doc.rust-lang.org/master/core/option/type.Option.html' title='core::option::Option'>Option</a>&lt;&amp;<a href='http://doc.rust-lang.org/master/std/primitive.str.html'>str</a>&gt;</code></h4>
+<div class='docblock'><p>Get the remote&#39;s name.</p>
+
+<p>Returns <code>None</code> if this remote has not yet been named or if the name is
+not valid utf-8</p>
+</div><h4 id='method.name_bytes' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.name_bytes' class='fnname'>name_bytes</a>(&amp;self) -&gt; <a class='type' href='http://doc.rust-lang.org/master/core/option/type.Option.html' title='core::option::Option'>Option</a>&lt;&amp;<a href='http://doc.rust-lang.org/master/std/primitive.slice.html'>[<a href='http://doc.rust-lang.org/master/std/primitive.u8.html'>u8</a>]</a>&gt;</code></h4>
+<div class='docblock'><p>Get the remote&#39;s name, in bytes.</p>
+
+<p>Returns <code>None</code> if this remote has not yet been named</p>
+</div><h4 id='method.url' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.url' class='fnname'>url</a>(&amp;self) -&gt; <a class='type' href='http://doc.rust-lang.org/master/core/option/type.Option.html' title='core::option::Option'>Option</a>&lt;&amp;<a href='http://doc.rust-lang.org/master/std/primitive.str.html'>str</a>&gt;</code></h4>
+<div class='docblock'><p>Get the remote&#39;s url.</p>
+
+<p>Returns <code>None</code> if the url is not valid utf-8</p>
+</div><h4 id='method.url_bytes' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.url_bytes' class='fnname'>url_bytes</a>(&amp;self) -&gt; &amp;<a href='http://doc.rust-lang.org/master/std/primitive.slice.html'>[<a href='http://doc.rust-lang.org/master/std/primitive.u8.html'>u8</a>]</a></code></h4>
+<div class='docblock'><p>Get the remote&#39;s url as a byte array.</p>
+</div><h4 id='method.pushurl' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.pushurl' class='fnname'>pushurl</a>(&amp;self) -&gt; <a class='type' href='http://doc.rust-lang.org/master/core/option/type.Option.html' title='core::option::Option'>Option</a>&lt;&amp;<a href='http://doc.rust-lang.org/master/std/primitive.str.html'>str</a>&gt;</code></h4>
+<div class='docblock'><p>Get the remote&#39;s pushurl.</p>
+
+<p>Returns <code>None</code> if the pushurl is not valid utf-8</p>
+</div><h4 id='method.pushurl_bytes' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.pushurl_bytes' class='fnname'>pushurl_bytes</a>(&amp;self) -&gt; <a class='type' href='http://doc.rust-lang.org/master/core/option/type.Option.html' title='core::option::Option'>Option</a>&lt;&amp;<a href='http://doc.rust-lang.org/master/std/primitive.slice.html'>[<a href='http://doc.rust-lang.org/master/std/primitive.u8.html'>u8</a>]</a>&gt;</code></h4>
+<div class='docblock'><p>Get the remote&#39;s pushurl as a byte array.</p>
+</div><h4 id='method.connect' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.connect' class='fnname'>connect</a>(&amp;mut self, dir: <a class='type' href='../git2/type.Direction.html' title='git2::Direction'>Direction</a>) -&gt; <a class='type' href='http://doc.rust-lang.org/master/core/result/type.Result.html' title='core::result::Result'>Result</a>&lt;<a href='http://doc.rust-lang.org/master/std/primitive.unit.html'>()</a>, <a class='struct' href='../git2/struct.Error.html' title='git2::Error'>Error</a>&gt;</code></h4>
+<div class='docblock'><p>Open a connection to a remote.</p>
+</div><h4 id='method.connected' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.connected' class='fnname'>connected</a>(&amp;mut self) -&gt; <a href='http://doc.rust-lang.org/master/std/primitive.bool.html'>bool</a></code></h4>
+<div class='docblock'><p>Check whether the remote is connected</p>
+</div><h4 id='method.disconnect' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.disconnect' class='fnname'>disconnect</a>(&amp;mut self)</code></h4>
+<div class='docblock'><p>Disconnect from the remote</p>
+</div><h4 id='method.save' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.save' class='fnname'>save</a>(&amp;self) -&gt; <a class='type' href='http://doc.rust-lang.org/master/core/result/type.Result.html' title='core::result::Result'>Result</a>&lt;<a href='http://doc.rust-lang.org/master/std/primitive.unit.html'>()</a>, <a class='struct' href='../git2/struct.Error.html' title='git2::Error'>Error</a>&gt;</code></h4>
+<div class='docblock'><p>Save a remote to its repository&#39;s configuration</p>
+
+<p>Anonymous remotes cannot be saved</p>
+</div><h4 id='method.add_fetch' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.add_fetch' class='fnname'>add_fetch</a>(&amp;mut self, spec: &amp;<a href='http://doc.rust-lang.org/master/std/primitive.str.html'>str</a>) -&gt; <a class='type' href='http://doc.rust-lang.org/master/core/result/type.Result.html' title='core::result::Result'>Result</a>&lt;<a href='http://doc.rust-lang.org/master/std/primitive.unit.html'>()</a>, <a class='struct' href='../git2/struct.Error.html' title='git2::Error'>Error</a>&gt;</code></h4>
+<div class='docblock'><p>Add a fetch refspec to the remote</p>
+</div><h4 id='method.add_push' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.add_push' class='fnname'>add_push</a>(&amp;mut self, spec: &amp;<a href='http://doc.rust-lang.org/master/std/primitive.str.html'>str</a>) -&gt; <a class='type' href='http://doc.rust-lang.org/master/core/result/type.Result.html' title='core::result::Result'>Result</a>&lt;<a href='http://doc.rust-lang.org/master/std/primitive.unit.html'>()</a>, <a class='struct' href='../git2/struct.Error.html' title='git2::Error'>Error</a>&gt;</code></h4>
+<div class='docblock'><p>Add a push refspec to the remote</p>
+</div><h4 id='method.set_check_cert' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.set_check_cert' class='fnname'>set_check_cert</a>(&amp;mut self, check: <a href='http://doc.rust-lang.org/master/std/primitive.bool.html'>bool</a>)</code></h4>
+<div class='docblock'><p>Choose whether to check the server&#39;s certificate (applies to HTTPS only)</p>
+
+<p>The default is yes.</p>
+</div><h4 id='method.set_url' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.set_url' class='fnname'>set_url</a>(&amp;mut self, url: &amp;<a href='http://doc.rust-lang.org/master/std/primitive.str.html'>str</a>) -&gt; <a class='type' href='http://doc.rust-lang.org/master/core/result/type.Result.html' title='core::result::Result'>Result</a>&lt;<a href='http://doc.rust-lang.org/master/std/primitive.unit.html'>()</a>, <a class='struct' href='../git2/struct.Error.html' title='git2::Error'>Error</a>&gt;</code></h4>
+<div class='docblock'><p>Set the remote&#39;s url</p>
+
+<p>Existing connections will not be updated.</p>
+</div><h4 id='method.set_pushurl' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.set_pushurl' class='fnname'>set_pushurl</a>(&amp;mut self, pushurl: <a class='type' href='http://doc.rust-lang.org/master/core/option/type.Option.html' title='core::option::Option'>Option</a>&lt;&amp;<a href='http://doc.rust-lang.org/master/std/primitive.str.html'>str</a>&gt;) -&gt; <a class='type' href='http://doc.rust-lang.org/master/core/result/type.Result.html' title='core::result::Result'>Result</a>&lt;<a href='http://doc.rust-lang.org/master/std/primitive.unit.html'>()</a>, <a class='struct' href='../git2/struct.Error.html' title='git2::Error'>Error</a>&gt;</code></h4>
+<div class='docblock'><p>Set the remote&#39;s pushurl.</p>
+
+<p><code>None</code> indicates that it should be cleared.</p>
+
+<p>Existing connections will not be updated.</p>
+</div><h4 id='method.set_update_fetchhead' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.set_update_fetchhead' class='fnname'>set_update_fetchhead</a>(&amp;mut self, update: <a href='http://doc.rust-lang.org/master/std/primitive.bool.html'>bool</a>)</code></h4>
+<div class='docblock'><p>Sets the update FETCH_HEAD setting. By default, FETCH_HEAD will be
+updated on every fetch.</p>
+</div><h4 id='method.set_fetch_refspecs' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.set_fetch_refspecs' class='fnname'>set_fetch_refspecs</a>&lt;T: <a class='trait' href='http://doc.rust-lang.org/master/rustrt/c_str/trait.ToCStr.html' title='rustrt::c_str::ToCStr'>ToCStr</a>, I: <a class='trait' href='http://doc.rust-lang.org/master/core/iter/trait.Iterator.html' title='core::iter::Iterator'>Iterator</a>&lt;T&gt;&gt;(&amp;mut self, i: I) -&gt; <a class='type' href='http://doc.rust-lang.org/master/core/result/type.Result.html' title='core::result::Result'>Result</a>&lt;<a href='http://doc.rust-lang.org/master/std/primitive.unit.html'>()</a>, <a class='struct' href='../git2/struct.Error.html' title='git2::Error'>Error</a>&gt;</code></h4>
+<div class='docblock'><p>Set the remote&#39;s list of fetch refspecs</p>
+</div><h4 id='method.set_push_refspecs' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.set_push_refspecs' class='fnname'>set_push_refspecs</a>&lt;T: <a class='trait' href='http://doc.rust-lang.org/master/rustrt/c_str/trait.ToCStr.html' title='rustrt::c_str::ToCStr'>ToCStr</a>, I: <a class='trait' href='http://doc.rust-lang.org/master/core/iter/trait.Iterator.html' title='core::iter::Iterator'>Iterator</a>&lt;T&gt;&gt;(&amp;mut self, i: I) -&gt; <a class='type' href='http://doc.rust-lang.org/master/core/result/type.Result.html' title='core::result::Result'>Result</a>&lt;<a href='http://doc.rust-lang.org/master/std/primitive.unit.html'>()</a>, <a class='struct' href='../git2/struct.Error.html' title='git2::Error'>Error</a>&gt;</code></h4>
+<div class='docblock'><p>Set the remote&#39;s list of push refspecs</p>
+</div><h4 id='method.clear_refspecs' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.clear_refspecs' class='fnname'>clear_refspecs</a>(&amp;mut self)</code></h4>
+<div class='docblock'><p>Clear the refspecs</p>
+
+<p>Remove all configured fetch and push refspecs from the remote.</p>
+</div><h4 id='method.delete' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.delete' class='fnname'>delete</a>(&amp;mut self) -&gt; <a class='type' href='http://doc.rust-lang.org/master/core/result/type.Result.html' title='core::result::Result'>Result</a>&lt;<a href='http://doc.rust-lang.org/master/std/primitive.unit.html'>()</a>, <a class='struct' href='../git2/struct.Error.html' title='git2::Error'>Error</a>&gt;</code></h4>
+<div class='docblock'><p>Delete an existing persisted remote.</p>
+
+<p>All remote-tracking branches and configuration settings for the remote
+will be removed.</p>
+</div><h4 id='method.download' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.download' class='fnname'>download</a>(&amp;mut self) -&gt; <a class='type' href='http://doc.rust-lang.org/master/core/result/type.Result.html' title='core::result::Result'>Result</a>&lt;<a href='http://doc.rust-lang.org/master/std/primitive.unit.html'>()</a>, <a class='struct' href='../git2/struct.Error.html' title='git2::Error'>Error</a>&gt;</code></h4>
+<div class='docblock'><p>Download and index the packfile</p>
+
+<p>Connect to the remote if it hasn&#39;t been done yet, negotiate with the
+remote git which objects are missing, download and index the packfile.</p>
+
+<p>The .idx file will be created and both it and the packfile with be
+renamed to their final name.</p>
+</div><h4 id='method.refspecs' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.refspecs' class='fnname'>refspecs</a>(&amp;self) -&gt; <a class='struct' href='../git2/struct.Refspecs.html' title='git2::Refspecs'>Refspecs</a></code></h4>
+<div class='docblock'><p>Get the number of refspecs for a remote</p>
+</div><h4 id='method.rename' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.rename' class='fnname'>rename</a>(&amp;mut self, new_name: &amp;<a href='http://doc.rust-lang.org/master/std/primitive.str.html'>str</a>) -&gt; <a class='type' href='http://doc.rust-lang.org/master/core/result/type.Result.html' title='core::result::Result'>Result</a>&lt;<a href='http://doc.rust-lang.org/master/std/primitive.unit.html'>()</a>, <a class='struct' href='../git2/struct.Error.html' title='git2::Error'>Error</a>&gt;</code></h4>
+<div class='docblock'><p>Give the remote a new name</p>
+
+<p>All remote-tracking branches and configuration settings for the remote
+are updated.</p>
+
+<p>A temporary in-memory remote cannot be given a name with this method.</p>
+</div><h4 id='method.fetch' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.fetch' class='fnname'>fetch</a>(&amp;mut self, signature: &amp;<a class='struct' href='../git2/struct.Signature.html' title='git2::Signature'>Signature</a>, msg: <a class='type' href='http://doc.rust-lang.org/master/core/option/type.Option.html' title='core::option::Option'>Option</a>&lt;&amp;<a href='http://doc.rust-lang.org/master/std/primitive.str.html'>str</a>&gt;) -&gt; <a class='type' href='http://doc.rust-lang.org/master/core/result/type.Result.html' title='core::result::Result'>Result</a>&lt;<a href='http://doc.rust-lang.org/master/std/primitive.unit.html'>()</a>, <a class='struct' href='../git2/struct.Error.html' title='git2::Error'>Error</a>&gt;</code></h4>
+<div class='docblock'><p>Download new data and update tips</p>
+
+<p>Convenience function to connect to a remote, download the data,
+disconnect and update the remote-tracking branches.</p>
+</div><h4 id='method.update_tips' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.update_tips' class='fnname'>update_tips</a>(&amp;mut self, signature: &amp;<a class='struct' href='../git2/struct.Signature.html' title='git2::Signature'>Signature</a>, msg: <a class='type' href='http://doc.rust-lang.org/master/core/option/type.Option.html' title='core::option::Option'>Option</a>&lt;&amp;<a href='http://doc.rust-lang.org/master/std/primitive.str.html'>str</a>&gt;) -&gt; <a class='type' href='http://doc.rust-lang.org/master/core/result/type.Result.html' title='core::result::Result'>Result</a>&lt;<a href='http://doc.rust-lang.org/master/std/primitive.unit.html'>()</a>, <a class='struct' href='../git2/struct.Error.html' title='git2::Error'>Error</a>&gt;</code></h4>
+<div class='docblock'><p>Update the tips to the new state</p>
+</div><h4 id='method.update_fetchhead' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.update_fetchhead' class='fnname'>update_fetchhead</a>(&amp;mut self) -&gt; <a class='type' href='http://doc.rust-lang.org/master/core/result/type.Result.html' title='core::result::Result'>Result</a>&lt;<a href='http://doc.rust-lang.org/master/std/primitive.unit.html'>()</a>, <a class='struct' href='../git2/struct.Error.html' title='git2::Error'>Error</a>&gt;</code></h4>
+<div class='docblock'><p>Retrieve the update FETCH_HEAD setting.</p>
+</div></div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl&lt;'a&gt; <a class='trait' href='http://doc.rust-lang.org/master/core/clone/trait.Clone.html' title='core::clone::Clone'>Clone</a> for <a class='struct' href='../git2/struct.Remote.html' title='git2::Remote'>Remote</a>&lt;'a&gt;</code></h3><div class='impl-methods'><h4 id='method.clone' class='method'><a class='stability Unstable' title='Unstable'></a><code>fn <a href='#method.clone' class='fnname'>clone</a>(&amp;self) -&gt; <a class='struct' href='../git2/struct.Remote.html' title='git2::Remote'>Remote</a>&lt;'a&gt;</code></h4>
+<h4 id='method.clone_from' class='method'><a class='stability Experimental' title='Experimental: this function is mostly unused'></a><code>fn <a href='#tymethod.clone_from' class='fnname'>clone_from</a>(&amp;mut self, source: &amp;Self)</code></h4>
+</div><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl&lt;'a&gt; <a class='trait' href='http://doc.rust-lang.org/master/core/ops/trait.Drop.html' title='core::ops::Drop'>Drop</a> for <a class='struct' href='../git2/struct.Remote.html' title='git2::Remote'>Remote</a>&lt;'a&gt;</code></h3><div class='impl-methods'><h4 id='method.drop' class='method'><a class='stability Experimental' title='Experimental'></a><code>fn <a href='#method.drop' class='fnname'>drop</a>(&amp;mut self)</code></h4>
+</div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <div id="help" class="hidden">
+        <div class="shortcuts">
+            <h1>Keyboard shortcuts</h1>
+            <dl>
+                <dt>?</dt>
+                <dd>Show this help dialog</dd>
+                <dt>S</dt>
+                <dd>Focus the search field</dd>
+                <dt>&larrb;</dt>
+                <dd>Move up in search results</dd>
+                <dt>&rarrb;</dt>
+                <dd>Move down in search results</dd>
+                <dt>&#9166;</dt>
+                <dd>Go to active search result</dd>
+            </dl>
+        </div>
+        <div class="infos">
+            <h1>Search tricks</h1>
+            <p>
+                Prefix searches with a type followed by a colon (e.g.
+                <code>fn:</code>) to restrict the search to a given type.
+            </p>
+            <p>
+                Accepted types are: <code>fn</code>, <code>mod</code>,
+                <code>struct</code>, <code>enum</code>,
+                <code>trait</code>, <code>typedef</code> (or
+                <code>tdef</code>).
+            </p>
+        </div>
+    </div>
+
+    
+
+    <script>
+        window.rootPath = "../";
+        window.currentCrate = "git2";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../jquery.js"></script>
+    <script src="../main.js"></script>
+    
+    <script async src="../search-index.js"></script>
+</body>
+</html>

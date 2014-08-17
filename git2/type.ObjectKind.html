@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `ObjectKind` type in crate `git2`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, ObjectKind">
+
+    <title>git2::ObjectKind - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../main.css">
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <section class="sidebar">
+        
+        <p class='location'><a href='index.html'>git2</a></p><div class='block mod'><h2>Modules</h2><a class='mod ' href='build/index.html'>build</a></div><div class='block struct'><h2>Structs</h2><a class='struct ' href='struct.Blob.html'>Blob</a><a class='struct ' href='struct.Branch.html'>Branch</a><a class='struct ' href='struct.Branches.html'>Branches</a><a class='struct ' href='struct.Buf.html'>Buf</a><a class='struct ' href='struct.Commit.html'>Commit</a><a class='struct ' href='struct.Config.html'>Config</a><a class='struct ' href='struct.ConfigEntries.html'>ConfigEntries</a><a class='struct ' href='struct.ConfigEntry.html'>ConfigEntry</a><a class='struct ' href='struct.Error.html'>Error</a><a class='struct ' href='struct.Index.html'>Index</a><a class='struct ' href='struct.IndexEntry.html'>IndexEntry</a><a class='struct ' href='struct.Object.html'>Object</a><a class='struct ' href='struct.Oid.html'>Oid</a><a class='struct ' href='struct.Parents.html'>Parents</a><a class='struct ' href='struct.Reference.html'>Reference</a><a class='struct ' href='struct.ReferenceNames.html'>ReferenceNames</a><a class='struct ' href='struct.References.html'>References</a><a class='struct ' href='struct.Refspec.html'>Refspec</a><a class='struct ' href='struct.Refspecs.html'>Refspecs</a><a class='struct ' href='struct.Remote.html'>Remote</a><a class='struct ' href='struct.Repository.html'>Repository</a><a class='struct ' href='struct.Revspec.html'>Revspec</a><a class='struct ' href='struct.Signature.html'>Signature</a><a class='struct ' href='struct.StringArray.html'>StringArray</a><a class='struct ' href='struct.StringArrayBytes.html'>StringArrayBytes</a><a class='struct ' href='struct.StringArrayItems.html'>StringArrayItems</a><a class='struct ' href='struct.Submodule.html'>Submodule</a><a class='struct ' href='struct.Tree.html'>Tree</a><a class='struct ' href='struct.TreeEntry.html'>TreeEntry</a></div>
+    </section>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press 'S' to search, '?' for more options..."
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content type">
+<h1 class='fqn'><div class='in-band'>Enum <a href='index.html'>git2</a>&#8203;::<a class='type' href=''>ObjectKind</a>&#8203;</div><div class='out-of-band'><span id='render-detail'>
+            <a id="collapse-all" href="#">[-]
+            </a>&nbsp;<a id="expand-all" href="#">[+]</a>
+        </span><a id='src-2002' href='../src/git2/home/travis/build/alexcrichton/git2-rs/src/lib.rs.html#170-181'>[src]</a></div></h1>
+<pre class='rust enum'>pub enum ObjectKind {
+    Any,
+    Commit,
+    Tree,
+    Blob,
+    Tag,
+}</pre><div class='docblock'><p>An enumeration all possible kinds objects may have.</p>
+</div><h2 class='variants'>Variants</h2>
+<table><tr><td id='variant.Any'><a class='stability Unmarked' title='No stability level'></a><code>Any</code></td><td><div class='docblock'><p>An object which corresponds to a any git object</p>
+</div></td></tr><tr><td id='variant.Commit'><a class='stability Unmarked' title='No stability level'></a><code>Commit</code></td><td><div class='docblock'><p>An object which corresponds to a git commit</p>
+</div></td></tr><tr><td id='variant.Tree'><a class='stability Unmarked' title='No stability level'></a><code>Tree</code></td><td><div class='docblock'><p>An object which corresponds to a git tree</p>
+</div></td></tr><tr><td id='variant.Blob'><a class='stability Unmarked' title='No stability level'></a><code>Blob</code></td><td><div class='docblock'><p>An object which corresponds to a git blob</p>
+</div></td></tr><tr><td id='variant.Tag'><a class='stability Unmarked' title='No stability level'></a><code>Tag</code></td><td><div class='docblock'><p>An object which corresponds to a git tag</p>
+</div></td></tr></table><h2 id='methods'>Methods</h2><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl <a class='type' href='../git2/type.ObjectKind.html' title='git2::ObjectKind'>ObjectKind</a></code></h3><div class='impl-methods'><h4 id='method.str' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.str' class='fnname'>str</a>(&amp;self) -&gt; &amp;'static <a href='http://doc.rust-lang.org/master/std/primitive.str.html'>str</a></code></h4>
+<div class='docblock'><p>Convert an object type to its string representation.</p>
+</div><h4 id='method.is_loose' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.is_loose' class='fnname'>is_loose</a>(&amp;self) -&gt; <a href='http://doc.rust-lang.org/master/std/primitive.bool.html'>bool</a></code></h4>
+<div class='docblock'><p>Determine if the given git_otype is a valid loose object type.</p>
+</div><h4 id='method.from_raw' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.from_raw' class='fnname'>from_raw</a>(raw: <a class='type' href='../libgit2/type.git_otype.html' title='libgit2::git_otype'>git_otype</a>) -&gt; <a class='type' href='http://doc.rust-lang.org/master/core/option/type.Option.html' title='core::option::Option'>Option</a>&lt;<a class='type' href='../git2/type.ObjectKind.html' title='git2::ObjectKind'>ObjectKind</a>&gt;</code></h4>
+<div class='docblock'><p>Convert a raw git_otype to an ObjectKind</p>
+</div><h4 id='method.raw' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.raw' class='fnname'>raw</a>(&amp;self) -&gt; <a class='type' href='../libgit2/type.git_otype.html' title='libgit2::git_otype'>git_otype</a></code></h4>
+<div class='docblock'><p>Convert this kind into its raw representation</p>
+</div><h4 id='method.from_str' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.from_str' class='fnname'>from_str</a>(s: &amp;<a href='http://doc.rust-lang.org/master/std/primitive.str.html'>str</a>) -&gt; <a class='type' href='http://doc.rust-lang.org/master/core/option/type.Option.html' title='core::option::Option'>Option</a>&lt;<a class='type' href='../git2/type.ObjectKind.html' title='git2::ObjectKind'>ObjectKind</a>&gt;</code></h4>
+<div class='docblock'><p>Convert a string object type representation to its object type.</p>
+</div></div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl <a class='trait' href='http://doc.rust-lang.org/master/core/fmt/trait.Show.html' title='core::fmt::Show'>Show</a> for <a class='type' href='../git2/type.ObjectKind.html' title='git2::ObjectKind'>ObjectKind</a></code></h3><div class='impl-methods'><h4 id='method.fmt' class='method'><a class='stability Experimental' title='Experimental'></a><code>fn <a href='#method.fmt' class='fnname'>fmt</a>(&amp;self, f: &amp;mut <a class='struct' href='http://doc.rust-lang.org/master/core/fmt/struct.Formatter.html' title='core::fmt::Formatter'>Formatter</a>) -&gt; <a class='type' href='http://doc.rust-lang.org/master/core/fmt/type.Result.html' title='core::fmt::Result'>Result</a></code></h4>
+</div><h3 id='derived_implementations'>Derived Implementations </h3><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl <a class='trait' href='http://doc.rust-lang.org/master/core/cmp/trait.Eq.html' title='core::cmp::Eq'>Eq</a> for <a class='type' href='../git2/type.ObjectKind.html' title='git2::ObjectKind'>ObjectKind</a></code></h3><div class='impl-methods'><h4 id='method.assert_receiver_is_total_eq' class='method'><a class='stability Unstable' title='Unstable: Definition may change slightly after trait reform'></a><code>fn <a href='#tymethod.assert_receiver_is_total_eq' class='fnname'>assert_receiver_is_total_eq</a>(&amp;self)</code></h4>
+</div><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl <a class='trait' href='http://doc.rust-lang.org/master/core/cmp/trait.PartialEq.html' title='core::cmp::PartialEq'>PartialEq</a> for <a class='type' href='../git2/type.ObjectKind.html' title='git2::ObjectKind'>ObjectKind</a></code></h3><div class='impl-methods'><h4 id='method.eq' class='method'><a class='stability Unstable' title='Unstable: Definition may change slightly after trait reform'></a><code>fn <a href='#method.eq' class='fnname'>eq</a>(&amp;self, __arg_0: &amp;<a class='type' href='../git2/type.ObjectKind.html' title='git2::ObjectKind'>ObjectKind</a>) -&gt; <a href='http://doc.rust-lang.org/master/std/primitive.bool.html'>bool</a></code></h4>
+<h4 id='method.ne' class='method'><a class='stability Unstable' title='Unstable: Definition may change slightly after trait reform'></a><code>fn <a href='#method.ne' class='fnname'>ne</a>(&amp;self, __arg_0: &amp;<a class='type' href='../git2/type.ObjectKind.html' title='git2::ObjectKind'>ObjectKind</a>) -&gt; <a href='http://doc.rust-lang.org/master/std/primitive.bool.html'>bool</a></code></h4>
+</div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <div id="help" class="hidden">
+        <div class="shortcuts">
+            <h1>Keyboard shortcuts</h1>
+            <dl>
+                <dt>?</dt>
+                <dd>Show this help dialog</dd>
+                <dt>S</dt>
+                <dd>Focus the search field</dd>
+                <dt>&larrb;</dt>
+                <dd>Move up in search results</dd>
+                <dt>&rarrb;</dt>
+                <dd>Move down in search results</dd>
+                <dt>&#9166;</dt>
+                <dd>Go to active search result</dd>
+            </dl>
+        </div>
+        <div class="infos">
+            <h1>Search tricks</h1>
+            <p>
+                Prefix searches with a type followed by a colon (e.g.
+                <code>fn:</code>) to restrict the search to a given type.
+            </p>
+            <p>
+                Accepted types are: <code>fn</code>, <code>mod</code>,
+                <code>struct</code>, <code>enum</code>,
+                <code>trait</code>, <code>typedef</code> (or
+                <code>tdef</code>).
+            </p>
+        </div>
+    </div>
+
+    
+
+    <script>
+        window.rootPath = "../";
+        window.currentCrate = "git2";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../jquery.js"></script>
+    <script src="../main.js"></script>
+    
+    <script async src="../search-index.js"></script>
+</body>
+</html>

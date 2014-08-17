@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `git2` crate.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, git2">
+
+    <title>git2 - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../main.css">
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <section class="sidebar">
+        
+        <p class='location'></p>
+    </section>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press 'S' to search, '?' for more options..."
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content mod">
+<h1 class='fqn'><div class='in-band'>Crate <a class='mod' href=''>git2</a>&#8203;</div><div class='out-of-band'><a href='stability.html'>[stability]</a> <span id='render-detail'>
+            <a id="collapse-all" href="#">[-]
+            </a>&nbsp;<a id="expand-all" href="#">[+]</a>
+        </span><a id='src-0' href='../src/git2/home/travis/build/alexcrichton/git2-rs/src/lib.rs.html#1-333'>[src]</a></div></h1>
+<div class='docblock'>
+<h1 id="libgit2-bindings-for-rust" class='section-header'><a
+                           href="#libgit2-bindings-for-rust">libgit2 bindings for Rust</a></h1>
+<p>This library contains bindings to the <a href="https://libgit2.github.com/">libgit2</a> C library which is used
+to manage git repositories. The library itself is a work in progress and is
+likely lacking some bindings here and there, so be warned.</p>
+
+<p>The git2-rs library strives to be as close to libgit2 as possible, but also
+strives to make using libgit2 as safe as possible. All resource management
+is automatic as well as adding strong types to all interfaces (including
+<code>Result</code>)</p>
+
+<h2 id="creating-a-repository" class='section-header'><a
+                           href="#creating-a-repository">Creating a <code>Repository</code></a></h2>
+<p>The <code>Repository</code> is the source from which almost all other objects in git-rs
+are spawned. A repository can be created through opening, initializing, or
+cloning.</p>
+
+<h3 id="initializing-a-new-repository" class='section-header'><a
+                           href="#initializing-a-new-repository">Initializing a new repository</a></h3>
+<p>The <code>init</code> method will create a new repository, assuming one does not
+already exist.</p>
+<pre class='rust '>
+<span class='kw'>use</span> <span class='ident'>git2</span>::<span class='ident'>Repository</span>;
+
+<span class='kw'>let</span> <span class='ident'>path</span> <span class='op'>=</span> <span class='ident'>Path</span>::<span class='ident'>new</span>(<span class='string'>&quot;/path/to/a/repo&quot;</span>);
+<span class='kw'>let</span> <span class='ident'>repo</span> <span class='op'>=</span> <span class='kw'>match</span> <span class='ident'>Repository</span>::<span class='ident'>init</span>(<span class='kw-2'>&amp;</span><span class='ident'>path</span>) {
+    <span class='prelude-val'>Ok</span>(<span class='ident'>repo</span>) <span class='op'>=&gt;</span> <span class='ident'>repo</span>,
+    <span class='prelude-val'>Err</span>(<span class='ident'>e</span>) <span class='op'>=&gt;</span> <span class='macro'>fail</span><span class='macro'>!</span>(<span class='string'>&quot;failed to init `{}`: {}&quot;</span>, <span class='ident'>path</span>.<span class='ident'>display</span>(), <span class='ident'>e</span>),
+};
+</pre>
+
+<h3 id="opening-an-existing-repository" class='section-header'><a
+                           href="#opening-an-existing-repository">Opening an existing repository</a></h3><pre class='rust '>
+<span class='kw'>use</span> <span class='ident'>git2</span>::<span class='ident'>Repository</span>;
+
+<span class='kw'>let</span> <span class='ident'>path</span> <span class='op'>=</span> <span class='ident'>Path</span>::<span class='ident'>new</span>(<span class='string'>&quot;/path/to/a/repo&quot;</span>);
+<span class='kw'>let</span> <span class='ident'>repo</span> <span class='op'>=</span> <span class='kw'>match</span> <span class='ident'>Repository</span>::<span class='ident'>open</span>(<span class='kw-2'>&amp;</span><span class='ident'>path</span>) {
+    <span class='prelude-val'>Ok</span>(<span class='ident'>repo</span>) <span class='op'>=&gt;</span> <span class='ident'>repo</span>,
+    <span class='prelude-val'>Err</span>(<span class='ident'>e</span>) <span class='op'>=&gt;</span> <span class='macro'>fail</span><span class='macro'>!</span>(<span class='string'>&quot;failed to open `{}`: {}&quot;</span>, <span class='ident'>path</span>.<span class='ident'>display</span>(), <span class='ident'>e</span>),
+};
+</pre>
+
+<h3 id="cloning-an-existing-repository" class='section-header'><a
+                           href="#cloning-an-existing-repository">Cloning an existing repository</a></h3><pre class='rust '>
+<span class='kw'>use</span> <span class='ident'>git2</span>::<span class='ident'>Repository</span>;
+
+<span class='kw'>let</span> <span class='ident'>url</span> <span class='op'>=</span> <span class='string'>&quot;https://github.com/alexcrichton/git2-rs&quot;</span>;
+<span class='kw'>let</span> <span class='ident'>path</span> <span class='op'>=</span> <span class='ident'>Path</span>::<span class='ident'>new</span>(<span class='string'>&quot;/path/to/a/repo&quot;</span>);
+<span class='kw'>let</span> <span class='ident'>repo</span> <span class='op'>=</span> <span class='kw'>match</span> <span class='ident'>Repository</span>::<span class='ident'>clone</span>(<span class='ident'>url</span>, <span class='kw-2'>&amp;</span><span class='ident'>path</span>) {
+    <span class='prelude-val'>Ok</span>(<span class='ident'>repo</span>) <span class='op'>=&gt;</span> <span class='ident'>repo</span>,
+    <span class='prelude-val'>Err</span>(<span class='ident'>e</span>) <span class='op'>=&gt;</span> <span class='macro'>fail</span><span class='macro'>!</span>(<span class='string'>&quot;failed to clone `{}`: {}&quot;</span>, <span class='ident'>path</span>.<span class='ident'>display</span>(), <span class='ident'>e</span>),
+};
+</pre>
+
+<h2 id="working-with-a-repository" class='section-header'><a
+                           href="#working-with-a-repository">Working with a <code>Repository</code></a></h2>
+<p>All deriviative objects, references, etc are attached to the lifetime of the
+source <code>Repository</code>, to ensure that they do not outlive the repository
+itself.</p>
+</div><h2 id='modules' class='section-header'><a href="#modules">Modules</a></h2>
+<table>
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='mod' href='build/index.html'
+                               title='git2::build'>build</a></td>
+                        <td class='docblock short'><p>Builder-pattern objects for configuration various git operations.</p>
+</td>
+                    </tr>
+                </table><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
+<table>
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Blob.html'
+                               title='git2::Blob'>Blob</a></td>
+                        <td class='docblock short'><p>A structure to represent a git [blob][1]</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Branch.html'
+                               title='git2::Branch'>Branch</a></td>
+                        <td class='docblock short'><p>A structure to represent a git [branch][1]</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Branches.html'
+                               title='git2::Branches'>Branches</a></td>
+                        <td class='docblock short'><p>An iterator over the branches inside of a repository.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Buf.html'
+                               title='git2::Buf'>Buf</a></td>
+                        <td class='docblock short'><p>A structure to wrap an intermediate buffer used by libgit2.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Commit.html'
+                               title='git2::Commit'>Commit</a></td>
+                        <td class='docblock short'><p>A structure to represent a git [commit][1]</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Config.html'
+                               title='git2::Config'>Config</a></td>
+                        <td class='docblock short'><p>A structure representing a git configuration key/value store</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ConfigEntries.html'
+                               title='git2::ConfigEntries'>ConfigEntries</a></td>
+                        <td class='docblock short'><p>An iterator over the <code>ConfigEntry</code> values of a <code>Config</code> structure.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ConfigEntry.html'
+                               title='git2::ConfigEntry'>ConfigEntry</a></td>
+                        <td class='docblock short'><p>A struct representing a certain entry owned by a <code>Config</code> instance.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Error.html'
+                               title='git2::Error'>Error</a></td>
+                        <td class='docblock short'><p>A structure to represent errors coming out of libgit2.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Index.html'
+                               title='git2::Index'>Index</a></td>
+                        <td class='docblock short'><p>A structure to represent a git [index][1]</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.IndexEntry.html'
+                               title='git2::IndexEntry'>IndexEntry</a></td>
+                        <td class='docblock short'><p>A structure to represent an entry or a file inside of an index.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Object.html'
+                               title='git2::Object'>Object</a></td>
+                        <td class='docblock short'><p>A structure to represent a git [object][1]</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Oid.html'
+                               title='git2::Oid'>Oid</a></td>
+                        <td class='docblock short'><p>Unique identity of any object (commit, tree, blob, tag).</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Parents.html'
+                               title='git2::Parents'>Parents</a></td>
+                        <td class='docblock short'><p>An iterator over the parent commits of a commit.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Reference.html'
+                               title='git2::Reference'>Reference</a></td>
+                        <td class='docblock short'><p>A structure to represent a git [reference][1].</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.ReferenceNames.html'
+                               title='git2::ReferenceNames'>ReferenceNames</a></td>
+                        <td class='docblock short'><p>An iterator over the names of references in a repository.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.References.html'
+                               title='git2::References'>References</a></td>
+                        <td class='docblock short'><p>An iterator over the references in a repository.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Refspec.html'
+                               title='git2::Refspec'>Refspec</a></td>
+                        <td class='docblock short'><p>A structure to represent a git [refspec][1].</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Refspecs.html'
+                               title='git2::Refspecs'>Refspecs</a></td>
+                        <td class='docblock short'><p>An iterator over the refspecs that a remote contains.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Remote.html'
+                               title='git2::Remote'>Remote</a></td>
+                        <td class='docblock short'><p>A structure represending a [remote][1] of a git repository.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Repository.html'
+                               title='git2::Repository'>Repository</a></td>
+                        <td class='docblock short'><p>An owned git repository, representing all state associated with the
+underlying filesystem.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Revspec.html'
+                               title='git2::Revspec'>Revspec</a></td>
+                        <td class='docblock short'><p>A revspec represents a range of revisions within a repository.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Signature.html'
+                               title='git2::Signature'>Signature</a></td>
+                        <td class='docblock short'><p>A Signature is used to indicate authorship of various actions throughout the
+library.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.StringArray.html'
+                               title='git2::StringArray'>StringArray</a></td>
+                        <td class='docblock short'><p>A string array structure used by libgit2</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.StringArrayBytes.html'
+                               title='git2::StringArrayBytes'>StringArrayBytes</a></td>
+                        <td class='docblock short'><p>A forward iterator over the strings of an array, casted to <code>&amp;[u8]</code>.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.StringArrayItems.html'
+                               title='git2::StringArrayItems'>StringArrayItems</a></td>
+                        <td class='docblock short'><p>A forward iterator over the strings of an array, casted to <code>&amp;str</code>.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Submodule.html'
+                               title='git2::Submodule'>Submodule</a></td>
+                        <td class='docblock short'><p>A structure to represent a git [submodule][1]</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Tree.html'
+                               title='git2::Tree'>Tree</a></td>
+                        <td class='docblock short'><p>A structure to represent a git [tree][1]</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.TreeEntry.html'
+                               title='git2::TreeEntry'>TreeEntry</a></td>
+                        <td class='docblock short'><p>A structure representing an entry inside of a tree. An entry is borrowed
+from a tree.</p>
+</td>
+                    </tr>
+                </table><h2 id='enums' class='section-header'><a href="#enums">Enums</a></h2>
+<table>
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='type' href='type.BranchType.html'
+                               title='git2::BranchType'>BranchType</a></td>
+                        <td class='docblock short'><p>An enumeration for the possible types of branches</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='type' href='type.ConfigLevel.html'
+                               title='git2::ConfigLevel'>ConfigLevel</a></td>
+                        <td class='docblock short'><p>An enumeration of the possible priority levels of a config file.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='type' href='type.Direction.html'
+                               title='git2::Direction'>Direction</a></td>
+                        <td class='docblock short'><p>An enumeration of the possible directions for a remote.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='type' href='type.ErrorCode.html'
+                               title='git2::ErrorCode'>ErrorCode</a></td>
+                        <td class='docblock short'><p>An enumeration of possible errors that can happen when working with a git
+repository.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='type' href='type.ObjectKind.html'
+                               title='git2::ObjectKind'>ObjectKind</a></td>
+                        <td class='docblock short'><p>An enumeration all possible kinds objects may have.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='type' href='type.RepositoryState.html'
+                               title='git2::RepositoryState'>RepositoryState</a></td>
+                        <td class='docblock short'><p>A listing of the possible states that a repository can be in.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='type' href='type.ResetType.html'
+                               title='git2::ResetType'>ResetType</a></td>
+                        <td class='docblock short'><p>An enumeration of the operations that can be performed for the <code>reset</code>
+method on a <code>Repository</code>.</p>
+</td>
+                    </tr>
+                </table></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <div id="help" class="hidden">
+        <div class="shortcuts">
+            <h1>Keyboard shortcuts</h1>
+            <dl>
+                <dt>?</dt>
+                <dd>Show this help dialog</dd>
+                <dt>S</dt>
+                <dd>Focus the search field</dd>
+                <dt>&larrb;</dt>
+                <dd>Move up in search results</dd>
+                <dt>&rarrb;</dt>
+                <dd>Move down in search results</dd>
+                <dt>&#9166;</dt>
+                <dd>Go to active search result</dd>
+            </dl>
+        </div>
+        <div class="infos">
+            <h1>Search tricks</h1>
+            <p>
+                Prefix searches with a type followed by a colon (e.g.
+                <code>fn:</code>) to restrict the search to a given type.
+            </p>
+            <p>
+                Accepted types are: <code>fn</code>, <code>mod</code>,
+                <code>struct</code>, <code>enum</code>,
+                <code>trait</code>, <code>typedef</code> (or
+                <code>tdef</code>).
+            </p>
+        </div>
+    </div>
+
+    
+
+    <script>
+        window.rootPath = "../";
+        window.currentCrate = "git2";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../jquery.js"></script>
+    <script src="../main.js"></script>
+    
+    <script async src="../search-index.js"></script>
+</body>
+</html>

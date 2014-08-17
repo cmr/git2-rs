@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `Submodule` struct in crate `git2`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, Submodule">
+
+    <title>git2::Submodule - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../main.css">
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <section class="sidebar">
+        
+        <p class='location'><a href='index.html'>git2</a></p><div class='block mod'><h2>Modules</h2><a class='mod ' href='build/index.html'>build</a></div><div class='block struct'><h2>Structs</h2><a class='struct ' href='struct.Blob.html'>Blob</a><a class='struct ' href='struct.Branch.html'>Branch</a><a class='struct ' href='struct.Branches.html'>Branches</a><a class='struct ' href='struct.Buf.html'>Buf</a><a class='struct ' href='struct.Commit.html'>Commit</a><a class='struct ' href='struct.Config.html'>Config</a><a class='struct ' href='struct.ConfigEntries.html'>ConfigEntries</a><a class='struct ' href='struct.ConfigEntry.html'>ConfigEntry</a><a class='struct ' href='struct.Error.html'>Error</a><a class='struct ' href='struct.Index.html'>Index</a><a class='struct ' href='struct.IndexEntry.html'>IndexEntry</a><a class='struct ' href='struct.Object.html'>Object</a><a class='struct ' href='struct.Oid.html'>Oid</a><a class='struct ' href='struct.Parents.html'>Parents</a><a class='struct ' href='struct.Reference.html'>Reference</a><a class='struct ' href='struct.ReferenceNames.html'>ReferenceNames</a><a class='struct ' href='struct.References.html'>References</a><a class='struct ' href='struct.Refspec.html'>Refspec</a><a class='struct ' href='struct.Refspecs.html'>Refspecs</a><a class='struct ' href='struct.Remote.html'>Remote</a><a class='struct ' href='struct.Repository.html'>Repository</a><a class='struct ' href='struct.Revspec.html'>Revspec</a><a class='struct ' href='struct.Signature.html'>Signature</a><a class='struct ' href='struct.StringArray.html'>StringArray</a><a class='struct ' href='struct.StringArrayBytes.html'>StringArrayBytes</a><a class='struct ' href='struct.StringArrayItems.html'>StringArrayItems</a><a class='struct current' href='struct.Submodule.html'>Submodule</a><a class='struct ' href='struct.Tree.html'>Tree</a><a class='struct ' href='struct.TreeEntry.html'>TreeEntry</a></div>
+    </section>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press 'S' to search, '?' for more options..."
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content struct">
+<h1 class='fqn'><div class='in-band'>Struct <a href='index.html'>git2</a>&#8203;::<a class='struct' href=''>Submodule</a>&#8203;</div><div class='out-of-band'><span id='render-detail'>
+            <a id="collapse-all" href="#">[-]
+            </a>&nbsp;<a id="expand-all" href="#">[+]</a>
+        </span><a id='src-18473' href='../src/git2/home/travis/build/alexcrichton/git2-rs/src/submodule.rs.html#9-14'>[src]</a></div></h1>
+<pre class='rust struct'>pub struct Submodule&lt;'a&gt; {
+    // some fields omitted
+}</pre><div class='docblock'><p>A structure to represent a git <a href="http://git-scm.com/book/en/Git-Tools-Submodules">submodule</a></p>
+</div><h2 id='methods'>Methods</h2><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl&lt;'a&gt; <a class='struct' href='../git2/struct.Submodule.html' title='git2::Submodule'>Submodule</a>&lt;'a&gt;</code></h3><div class='impl-methods'><h4 id='method.from_raw' class='method'><a class='stability Unmarked' title='No stability level'></a><code>unsafe fn <a href='#method.from_raw' class='fnname'>from_raw</a>(_repo: &amp;<a class='struct' href='../git2/struct.Repository.html' title='git2::Repository'>Repository</a>, raw: *mut <a class='type' href='../libgit2/type.git_submodule.html' title='libgit2::git_submodule'>git_submodule</a>) -&gt; <a class='struct' href='../git2/struct.Submodule.html' title='git2::Submodule'>Submodule</a></code></h4>
+<div class='docblock'><p>Create a new object from its raw component.</p>
+
+<p>This method is unsafe as there is no guarantee that <code>raw</code> is a valid
+pointer.</p>
+</div><h4 id='method.new' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.new' class='fnname'>new</a>&lt;'a&gt;(repo: &amp;'a <a class='struct' href='../git2/struct.Repository.html' title='git2::Repository'>Repository</a>, url: &amp;<a href='http://doc.rust-lang.org/master/std/primitive.str.html'>str</a>, path: &amp;<a class='struct' href='http://doc.rust-lang.org/master/std/path/posix/struct.Path.html' title='std::path::posix::Path'>Path</a>, use_gitlink: <a href='http://doc.rust-lang.org/master/std/primitive.bool.html'>bool</a>) -&gt; <a class='type' href='http://doc.rust-lang.org/master/core/result/type.Result.html' title='core::result::Result'>Result</a>&lt;<a class='struct' href='../git2/struct.Submodule.html' title='git2::Submodule'>Submodule</a>&lt;'a&gt;, <a class='struct' href='../git2/struct.Error.html' title='git2::Error'>Error</a>&gt;</code></h4>
+<div class='docblock'><p>Set up a new git submodule for checkout.</p>
+
+<p>This does &quot;git submodule add&quot; up to the fetch and checkout of the
+submodule contents. It preps a new submodule, creates an entry in
+<code>.gitmodules</code> and creates an empty initialized repository either at the
+given path in the working directory or in <code>.git/modules</code> with a gitlink
+from the working directory to the new repo.</p>
+
+<p>To fully emulate &quot;git submodule add&quot; call this function, then <code>open()</code>
+the submodule repo and perform the clone step as needed. Lastly, call
+<code>finalize()</code> to wrap up adding the new submodule and <code>.gitmodules</code> to
+the index to be ready to commit.</p>
+</div><h4 id='method.lookup' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.lookup' class='fnname'>lookup</a>&lt;'a&gt;(repo: &amp;'a <a class='struct' href='../git2/struct.Repository.html' title='git2::Repository'>Repository</a>, name: &amp;<a href='http://doc.rust-lang.org/master/std/primitive.str.html'>str</a>) -&gt; <a class='type' href='http://doc.rust-lang.org/master/core/result/type.Result.html' title='core::result::Result'>Result</a>&lt;<a class='struct' href='../git2/struct.Submodule.html' title='git2::Submodule'>Submodule</a>&lt;'a&gt;, <a class='struct' href='../git2/struct.Error.html' title='git2::Error'>Error</a>&gt;</code></h4>
+<div class='docblock'><p>Lookup submodule information by name or path.</p>
+
+<p>Given either the submodule name or path (they are usually the same),
+this returns a structure describing the submodule.</p>
+</div><h4 id='method.branch' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.branch' class='fnname'>branch</a>(&amp;self) -&gt; <a class='type' href='http://doc.rust-lang.org/master/core/option/type.Option.html' title='core::option::Option'>Option</a>&lt;&amp;<a href='http://doc.rust-lang.org/master/std/primitive.str.html'>str</a>&gt;</code></h4>
+<div class='docblock'><p>Get the submodule&#39;s branch.</p>
+
+<p>Returns <code>None</code> if the branch is not valid utf-8 or if the branch is not
+yet available.</p>
+</div><h4 id='method.branch_bytes' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.branch_bytes' class='fnname'>branch_bytes</a>(&amp;self) -&gt; <a class='type' href='http://doc.rust-lang.org/master/core/option/type.Option.html' title='core::option::Option'>Option</a>&lt;&amp;<a href='http://doc.rust-lang.org/master/std/primitive.slice.html'>[<a href='http://doc.rust-lang.org/master/std/primitive.u8.html'>u8</a>]</a>&gt;</code></h4>
+<div class='docblock'><p>Get the branch for the submodule.</p>
+
+<p>Returns <code>None</code> if the branch is not yet available.</p>
+</div><h4 id='method.url' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.url' class='fnname'>url</a>(&amp;self) -&gt; <a class='type' href='http://doc.rust-lang.org/master/core/option/type.Option.html' title='core::option::Option'>Option</a>&lt;&amp;<a href='http://doc.rust-lang.org/master/std/primitive.str.html'>str</a>&gt;</code></h4>
+<div class='docblock'><p>Get the submodule&#39;s url.</p>
+
+<p>Returns <code>None</code> if the url is not valid utf-8</p>
+</div><h4 id='method.url_bytes' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.url_bytes' class='fnname'>url_bytes</a>(&amp;self) -&gt; &amp;<a href='http://doc.rust-lang.org/master/std/primitive.slice.html'>[<a href='http://doc.rust-lang.org/master/std/primitive.u8.html'>u8</a>]</a></code></h4>
+<div class='docblock'><p>Get the url for the submodule.</p>
+</div><h4 id='method.name' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.name' class='fnname'>name</a>(&amp;self) -&gt; <a class='type' href='http://doc.rust-lang.org/master/core/option/type.Option.html' title='core::option::Option'>Option</a>&lt;&amp;<a href='http://doc.rust-lang.org/master/std/primitive.str.html'>str</a>&gt;</code></h4>
+<div class='docblock'><p>Get the submodule&#39;s name.</p>
+
+<p>Returns <code>None</code> if the name is not valid utf-8</p>
+</div><h4 id='method.name_bytes' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.name_bytes' class='fnname'>name_bytes</a>(&amp;self) -&gt; &amp;<a href='http://doc.rust-lang.org/master/std/primitive.slice.html'>[<a href='http://doc.rust-lang.org/master/std/primitive.u8.html'>u8</a>]</a></code></h4>
+<div class='docblock'><p>Get the name for the submodule.</p>
+</div><h4 id='method.path' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.path' class='fnname'>path</a>(&amp;self) -&gt; <a class='struct' href='http://doc.rust-lang.org/master/std/path/posix/struct.Path.html' title='std::path::posix::Path'>Path</a></code></h4>
+<div class='docblock'><p>Get the path for the submodule.</p>
+</div><h4 id='method.head_id' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.head_id' class='fnname'>head_id</a>(&amp;self) -&gt; <a class='type' href='http://doc.rust-lang.org/master/core/option/type.Option.html' title='core::option::Option'>Option</a>&lt;<a class='struct' href='../git2/struct.Oid.html' title='git2::Oid'>Oid</a>&gt;</code></h4>
+<div class='docblock'><p>Get the OID for the submodule in the current HEAD tree.</p>
+</div><h4 id='method.index_id' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.index_id' class='fnname'>index_id</a>(&amp;self) -&gt; <a class='type' href='http://doc.rust-lang.org/master/core/option/type.Option.html' title='core::option::Option'>Option</a>&lt;<a class='struct' href='../git2/struct.Oid.html' title='git2::Oid'>Oid</a>&gt;</code></h4>
+<div class='docblock'><p>Get the OID for the submodule in the index.</p>
+</div><h4 id='method.workdir_id' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.workdir_id' class='fnname'>workdir_id</a>(&amp;self) -&gt; <a class='type' href='http://doc.rust-lang.org/master/core/option/type.Option.html' title='core::option::Option'>Option</a>&lt;<a class='struct' href='../git2/struct.Oid.html' title='git2::Oid'>Oid</a>&gt;</code></h4>
+<div class='docblock'><p>Get the OID for the submodule in the current working directory.</p>
+
+<p>This returns the OID that corresponds to looking up &#39;HEAD&#39; in the
+checked out submodule. If there are pending changes in the index or
+anything else, this won&#39;t notice that.</p>
+</div><h4 id='method.init' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.init' class='fnname'>init</a>(&amp;mut self, overwrite: <a href='http://doc.rust-lang.org/master/std/primitive.bool.html'>bool</a>) -&gt; <a class='type' href='http://doc.rust-lang.org/master/core/result/type.Result.html' title='core::result::Result'>Result</a>&lt;<a href='http://doc.rust-lang.org/master/std/primitive.unit.html'>()</a>, <a class='struct' href='../git2/struct.Error.html' title='git2::Error'>Error</a>&gt;</code></h4>
+<div class='docblock'><p>Copy submodule info into &quot;.git/config&quot; file.</p>
+
+<p>Just like &quot;git submodule init&quot;, this copies information about the
+submodule into &quot;.git/config&quot;. You can use the accessor functions above
+to alter the in-memory git_submodule object and control what is written
+to the config, overriding what is in .gitmodules.</p>
+
+<p>By default, existing entries will not be overwritten, but passing <code>true</code>
+for <code>overwrite</code> forces them to be updated.</p>
+</div><h4 id='method.open' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.open' class='fnname'>open</a>(&amp;self) -&gt; <a class='type' href='http://doc.rust-lang.org/master/core/result/type.Result.html' title='core::result::Result'>Result</a>&lt;<a class='struct' href='../git2/struct.Repository.html' title='git2::Repository'>Repository</a>, <a class='struct' href='../git2/struct.Error.html' title='git2::Error'>Error</a>&gt;</code></h4>
+<div class='docblock'><p>Open the repository for a submodule.</p>
+
+<p>This will only work if the submodule is checked out into the working
+directory.</p>
+</div><h4 id='method.raw' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.raw' class='fnname'>raw</a>(&amp;self) -&gt; *mut <a class='type' href='../libgit2/type.git_submodule.html' title='libgit2::git_submodule'>git_submodule</a></code></h4>
+<div class='docblock'><p>Access the underlying raw git submodule pointer.</p>
+</div><h4 id='method.reload' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.reload' class='fnname'>reload</a>(&amp;mut self, force: <a href='http://doc.rust-lang.org/master/std/primitive.bool.html'>bool</a>) -&gt; <a class='type' href='http://doc.rust-lang.org/master/core/result/type.Result.html' title='core::result::Result'>Result</a>&lt;<a href='http://doc.rust-lang.org/master/std/primitive.unit.html'>()</a>, <a class='struct' href='../git2/struct.Error.html' title='git2::Error'>Error</a>&gt;</code></h4>
+<div class='docblock'><p>Reread submodule info from config, index, and HEAD.</p>
+
+<p>Call this to reread cached submodule information for this submodule if
+you have reason to believe that it has changed.</p>
+
+<p>If <code>force</code> is <code>true</code>, then data will be reloaded even if it doesn&#39;t seem
+out of date</p>
+</div><h4 id='method.save' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.save' class='fnname'>save</a>(&amp;mut self) -&gt; <a class='type' href='http://doc.rust-lang.org/master/core/result/type.Result.html' title='core::result::Result'>Result</a>&lt;<a href='http://doc.rust-lang.org/master/std/primitive.unit.html'>()</a>, <a class='struct' href='../git2/struct.Error.html' title='git2::Error'>Error</a>&gt;</code></h4>
+<div class='docblock'><p>Write submodule settings to .gitmodules file.</p>
+
+<p>This commits any in-memory changes to the submodule to the gitmodules
+file on disk. You may also be interested in <code>init()</code> which
+writes submodule info to &quot;.git/config&quot; (which is better for local
+changes to submodule settings) and/or <code>sync()</code> which writes
+settings about remotes to the actual submodule repository.</p>
+</div><h4 id='method.sync' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.sync' class='fnname'>sync</a>(&amp;mut self) -&gt; <a class='type' href='http://doc.rust-lang.org/master/core/result/type.Result.html' title='core::result::Result'>Result</a>&lt;<a href='http://doc.rust-lang.org/master/std/primitive.unit.html'>()</a>, <a class='struct' href='../git2/struct.Error.html' title='git2::Error'>Error</a>&gt;</code></h4>
+<div class='docblock'><p>Copy submodule remote info into submodule repo.</p>
+
+<p>This copies the information about the submodules URL into the checked
+out submodule config, acting like &quot;git submodule sync&quot;. This is useful
+if you have altered the URL for the submodule (or it has been altered
+by a fetch of upstream changes) and you need to update your local repo.</p>
+</div></div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl&lt;'a&gt; <a class='trait' href='http://doc.rust-lang.org/master/core/ops/trait.Drop.html' title='core::ops::Drop'>Drop</a> for <a class='struct' href='../git2/struct.Submodule.html' title='git2::Submodule'>Submodule</a>&lt;'a&gt;</code></h3><div class='impl-methods'><h4 id='method.drop' class='method'><a class='stability Experimental' title='Experimental'></a><code>fn <a href='#method.drop' class='fnname'>drop</a>(&amp;mut self)</code></h4>
+</div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <div id="help" class="hidden">
+        <div class="shortcuts">
+            <h1>Keyboard shortcuts</h1>
+            <dl>
+                <dt>?</dt>
+                <dd>Show this help dialog</dd>
+                <dt>S</dt>
+                <dd>Focus the search field</dd>
+                <dt>&larrb;</dt>
+                <dd>Move up in search results</dd>
+                <dt>&rarrb;</dt>
+                <dd>Move down in search results</dd>
+                <dt>&#9166;</dt>
+                <dd>Go to active search result</dd>
+            </dl>
+        </div>
+        <div class="infos">
+            <h1>Search tricks</h1>
+            <p>
+                Prefix searches with a type followed by a colon (e.g.
+                <code>fn:</code>) to restrict the search to a given type.
+            </p>
+            <p>
+                Accepted types are: <code>fn</code>, <code>mod</code>,
+                <code>struct</code>, <code>enum</code>,
+                <code>trait</code>, <code>typedef</code> (or
+                <code>tdef</code>).
+            </p>
+        </div>
+    </div>
+
+    
+
+    <script>
+        window.rootPath = "../";
+        window.currentCrate = "git2";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../jquery.js"></script>
+    <script src="../main.js"></script>
+    
+    <script async src="../search-index.js"></script>
+</body>
+</html>
